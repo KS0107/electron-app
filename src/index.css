@@ -1,7 +1,155 @@
+/* Importing the font used in the midnight theme */
+@import url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif;
-  margin: auto;
-  max-width: 38rem;
-  padding: 2rem;
+  font-family: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-4); /* Main background color */
+  color: var(--text-3); /* Normal text color */
+}
+
+.flex-container {
+  display: flex;
+  width: calc(100% - 4rem); /* Reduce width to add padding */
+  max-width: 76rem;
+  height: calc(100vh - 4rem); /* Adjust height to prevent overflow */
+  margin: 2rem; /* Add margin around the container */
+}
+
+.form-container, .jobs-list {
+  flex: 1;
+  padding: 2rem; /* Add padding inside each container */
+  overflow-y: auto;
+  border-radius: var(--roundness-l);
+}
+
+.jobs-list {
+  max-height: 100%;
+  background-color: var(--bg-3);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+}
+
+form input, form button {
+  padding: 0.5rem;
+  margin-bottom: var(--spacing);
+  border-radius: var(--roundness-s);
+  border: 1px solid var(--bg-2);
+  background-color: var(--bg-2);
+  color: var(--text-1);
+  transition: 0.2s ease;
+}
+
+
+button {
+  padding: 0.5rem;
+  margin-bottom: var(--spacing);
+  border-radius: var(--roundness-s);
+  border: 1px solid var(--bg-2);
+  background-color: var(--bg-2);
+  color: var(--text-2);
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+form button:hover{
+  padding: 0.5rem;
+  margin-bottom: var(--spacing);
+  border-radius: var(--roundness-s);
+  border: 1px solid var(--text-2);
+  background-color: var(--text-2);
+  color: var(--bg-2);
+}
+
+button:hover {
+  padding: 0.5rem;
+  margin-bottom: var(--spacing);
+  border-radius: var(--roundness-s);
+  border: 1px solid var(--text-2);
+  background-color: var(--text-2);
+  color: var(--bg-2);
+}
+
+
+.jobs-list {
+  overflow-y: auto;
+}
+
+input {
+  border-radius: var(--roundness-s);
+  padding: 0.5rem;
+  border: none; /* Remove border by default */
+  outline: none; /* Remove default focus outline */
+}
+
+input[type=text]:focus {
+  border: 1px solid var(--text-2); /* Thin light orange border when focused */
+}
+
+
+
+/* Custom variables from the midnight theme */
+:root {
+  --font: 'Figtree';
+  --spacing: 10px;
+  --roundness-xl: 15px;
+  --roundness-l: 20px;
+  --roundness-m: 16px;
+  --roundness-s: 12px;
+  --roundness-xs: 5px;
+  --roundness-xxs: 10px;
+  --hover-push: 0.05s ease-in;
+  --bg-1: hsl(220, 15%, 20%);
+  --bg-2: hsl(220, 15%, 16%);
+  --bg-3: hsl(220, 13%, 9%);
+  --bg-4: hsl(220, 15%, 10%);
+  --text-2: hsl(0, 64%, 68%);
+  --text-3: hsl(9, 9%, 73%);
+}
+
+/* Existing styles */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table, th, td {
+  border: 1px solid var(--bg-1);
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: var(--bg-2);
+  color: var(--text-2);
+}
+
+tr:nth-child(even) {
+  background-color: var(--bg-3);
+}
+
+tr:hover {
+  background-color: var(--hover);
+  cursor: pointer;
+}
+
+tr:active {
+  background-color: hsl(220, 15%, 25%); /* Slightly lighter background color when clicked */
+}
+.highlighted {
+  background-color: hsl(220, 15%, 25%); /* Slightly lighter background color for highlighted row */
 }

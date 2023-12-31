@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Hello World!</title>
-    <link rel="stylesheet" href="index.css" />
-  </head>
-  <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome.</p>
-  </body>
+<head>
+  <title>Impulse Tracking System</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="flex-container">
+    <div class="form-container">
+      <form id="jobForm">
+        <input type="hidden" id="jobId">
+        <input type="text" id="title" placeholder="Title" required><br>
+        <input type="text" id="company" placeholder="Company"><br>
+        <input type="text" id="location" placeholder="Location"><br>
+        <input type="text" id="description" placeholder="Description"><br>
+        <input type="text" id="status" placeholder="Status"><br>
+        <button type="submit" id="jobFormButton">Add Job</button>
+
+      </form>
+      <button id="loadJobsBtn" onclick="loadJobs()">Load Jobs</button>
+      <button id="clearJobsBtn" onclick="clearJobs()">Clear Jobs</button>
+    </div>
+    <div id="jobs-table-container" class="jobs-list"></div> <!-- Container for the table -->
+  </div>
+  </div>
+  <script src="renderer.js"></script> <!-- Your renderer script -->
+</body>
 </html>
