@@ -24,7 +24,7 @@ body {
 
 .form-container, .jobs-list {
   flex: 1;
-  padding: 2rem; /* Add padding inside each container */
+  padding: 3rem; /* Add padding inside each container */
   overflow-y: auto;
   border-radius: var(--roundness-l);
 }
@@ -38,9 +38,10 @@ form {
   display: flex;
   flex-direction: column;
   gap: var(--spacing);
+  margin-bottom: 4%;
 }
 
-form input, form button {
+form input, form button, form select {
   padding: 0.5rem;
   margin-bottom: var(--spacing);
   border-radius: var(--roundness-s);
@@ -85,7 +86,13 @@ button:hover {
   overflow-y: auto;
 }
 
-input {
+.statsbox {
+  max-height: 20%;
+  min-height: 20%;
+  background-color: var(--bg-3);
+  border-radius: var(--roundness-l);
+}
+input, select{
   border-radius: var(--roundness-s);
   padding: 0.5rem;
   border: none; /* Remove border by default */
@@ -101,7 +108,7 @@ input[type=text]:focus {
 /* Custom variables from the midnight theme */
 :root {
   --font: 'Figtree';
-  --spacing: 10px;
+  --spacing: 5px;
   --roundness-xl: 15px;
   --roundness-l: 20px;
   --roundness-m: 16px;
@@ -122,10 +129,11 @@ input[type=text]:focus {
 table {
   border-collapse: collapse;
   width: 100%;
+  border-radius: 12px; /* Add this line to round the corners */
 }
 
 table, th, td {
-  border: 1px solid var(--bg-1);
+  font-size: 1.75vh;
 }
 
 th, td {
@@ -138,18 +146,14 @@ th {
   color: var(--text-2);
 }
 
-tr:nth-child(even) {
-  background-color: var(--bg-3);
-}
-
 tr:hover {
-  background-color: var(--hover);
   cursor: pointer;
 }
 
 tr:active {
   background-color: hsl(220, 15%, 25%); /* Slightly lighter background color when clicked */
 }
+
 .highlighted {
   background-color: hsl(220, 15%, 25%); /* Slightly lighter background color for highlighted row */
 }

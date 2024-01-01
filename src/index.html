@@ -5,21 +5,56 @@
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
+
+  
   <div class="flex-container">
     <div class="form-container">
+      <h2 id="heading" style="text-align:center;margin-bottom:5%">Add a Job Application</h2>
       <form id="jobForm">
         <input type="hidden" id="jobId">
         <input type="text" id="title" placeholder="Title" required><br>
         <input type="text" id="company" placeholder="Company"><br>
         <input type="text" id="location" placeholder="Location"><br>
         <input type="text" id="description" placeholder="Description"><br>
-        <input type="text" id="status" placeholder="Status"><br>
+        <select id="status" required>
+          <option value="Submitted">Submitted</option>
+          <option value="Waiting">Waiting</option>
+          <option value="Assessment">Assessment</option>
+          <option value="Interview">Interview</option>
+          <option value="Offer">Offer</option>
+          <option value="Rejected">Rejected</option>
+        </select><br>
         <button type="submit" id="jobFormButton">Add Job</button>
 
       </form>
       <button id="loadJobsBtn" onclick="loadJobs()">Load Jobs</button>
       <button id="clearJobsBtn" onclick="clearJobs()">Clear Jobs</button>
+
+      <h2 style="text-align:center;margin-bottom:5%">Application Statistics</h2>
+      <div class="statsbox">
+        <table><tr><th>Submitted</th><th>Waiting</th><th>Assessment</th><th>Interview</th><th>Offer</th><th>Rejected</th></tr>
+          <tr>
+            <th id="submitted-count">Submitted</th>
+            <th id="waiting-count">Waiting</th>
+            <th id="assessment-count">Assessment</th>
+            <th id="interview-count">Interview</th>
+            <th id="offer-count">Offer</th>
+            <th id="rejected-count">Rejected</th>
+          </tr>
+          <tr>
+            <td id="submitted-percentage"></td>
+            <td id="waiting-percentage"></td>
+            <td id="assessment-percentage"></td>
+            <td id="interview-percentage"></td>
+            <td id="offer-percentage"></td>
+            <td id="rejected-percentage"></td>
+          </tr>
+        </table>
+        
+      </div>
     </div>
+
+
     <div id="jobs-table-container" class="jobs-list"></div> <!-- Container for the table -->
   </div>
   </div>

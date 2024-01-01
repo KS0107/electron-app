@@ -17,14 +17,43 @@ ipcRenderer.on('jobs-data', (event, jobs) => {
   table.createTHead().innerHTML = '<tr><th>Title</th><th>Company</th><th>Location</th><th>Description</th><th>Status</th></tr>';
 
   const tbody = table.createTBody();
+  const statusCount = {
+    Submitted: 0,
+    Waiting: 0,
+    Assessment: 0,
+    Interview: 0,
+    Offer: 0,
+    Rejected: 0,
+  };
+
   jobs.forEach(job => {
     const row = tbody.insertRow();
     row.innerHTML = `<td>${job.title}</td><td>${job.company}</td><td>${job.location}</td><td>${job.description}</td><td>${job.status}</td>`;
     row.addEventListener('click', () => editJob(job, row)); // Pass the row as well
+
+    // Update status count
+    if (statusCount.hasOwnProperty(job.status)) {
+      statusCount[job.status]++;
+    }
   });
+
+  // Calculate and update the percentages
+  const totalJobs = jobs.length;
+  for (const status in statusCount) {
+    const thCount = document.getElementById(status.toLowerCase() + '-count');
+    const tdPercentage = document.getElementById(status.toLowerCase() + '-percentage');
+    
+    if (thCount && tdPercentage) {
+      const count = statusCount[status];
+      const percentage = (count / totalJobs * 100).toFixed(2); // Calculate percentage with two decimal places
+      thCount.textContent = `${count}`;
+      tdPercentage.textContent = `${percentage}%`;
+    }
+  }
 
   tableContainer.appendChild(table);
 });
+
 
 document.getElementById('jobForm').addEventListener('submit', (event) => {
   event.preventDefault();
@@ -54,6 +83,7 @@ function editJob(job, rowElement) {
   document.getElementById('description').value = job.description;
   document.getElementById('status').value = job.status;
   document.getElementById('jobFormButton').textContent = 'Edit Job';
+  document.getElementById('heading').textContent = 'Editing Job';
 
   // Highlight the selected row
   const previouslySelected = document.querySelector('.highlighted');
@@ -74,4 +104,5 @@ function resetForm() {
   document.getElementById('jobForm').reset();
   document.getElementById('jobId').value = '';
   document.getElementById('jobFormButton').textContent = 'Add Job';
+  document.getElementById('heading').textContent = 'Add a Job Application';
 }

@@ -63,8 +63,8 @@ function insertJob(title, company, location, description, status, created_at) {
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 1200,
-    height: 800,
+    width: 1300,
+    height: 900,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
@@ -85,7 +85,12 @@ function createWindow() {
   ipcMain.on('add-job', (event, job) => {
     insertJob(job.title, job.company, job.location, job.description, job.status, job.created_at);
   });
+
+  // Execute JavaScript code in the renderer process to load jobs on application launch
+  mainWindow.webContents.executeJavaScript('loadJobs()');
+
 }
+
 
 app.on('ready', () => {
   createDatabase();
