@@ -5,6 +5,7 @@ as well as their status. Click on a job to edit its status or other information.
 
 # Installation
 
+Navigate to the electron-app directory and run ```npm install```, which will install all required dependencies. 
 This app hasn't been built and as such one can only run it with ```electron .``` after navigating to the electron-app directory. 
 
 # Features
